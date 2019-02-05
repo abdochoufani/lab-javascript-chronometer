@@ -1,26 +1,19 @@
-
 // Constructor
  function Chronometer() {
      this.seconds=0;
      this.minutes=0;
      this.milliseconds=0;
      this.start=undefined;
-     this.stop=false;
-     
+     this.stop=false;     
  }
- 
  Chronometer.prototype = {
-
     changeElements : function(elementTocChange , value) {
         value = value <10 ? "0" + value : value;
         document.getElementById(elementTocChange).innerHTML=value;
     },
     conuntingMilliseconds : function(){
         var that=this;
-        this.start=setTimeout(function(){
-            that.conuntingMilliseconds()
-        },1);
-
+        this.start=setTimeout(function(){that.conuntingMilliseconds()},1);
         if(this.milliseconds <900) {
             this.milliseconds +=1;
         } else {
@@ -44,24 +37,19 @@
         chronometer.changeElements("milUni",0);
         chronometer.changeElements("secUni",0);
         chronometer.changeElements("minUni",0);
-        } else {
-            chronometer.split();
-        }
+        } else {chronometer.split();}
     },
     resume : function(){
         if(!chronometer.stop){
             chronometer.stop=true;
             chronometer.conuntingMilliseconds();
-        } else {
-            chronometer.stopBtn();
-        }
+        } else {chronometer.stopBtn();}
         chronometer.changeIconsForStart();
     },
     stopBtn : function() {
         clearTimeout(this.start);
         this.stop=false;
     },
-
     changeIconsForStart: function() {
         if(this.stop) {
             btnLeft.classList.remove("start");
@@ -84,12 +72,11 @@
              splitList=document.getElementById("splits"),
             listItem=document.createElement("li");
         splitTime.push([chronometer.milliseconds,chronometer.seconds,chronometer.minutes]);
-        listItem.innerHTML=`${splitTime[0][2]} : ${splitTime[0][1]} : ${splitTime[0][0]} `;
+        listItem.innerHTML=`${splitTime[0][2]=splitTime[0][2] <10 ? "0" + splitTime[0][2] :splitTime[0][2]} : ${splitTime[0][1]=splitTime[0][1] <10 ? "0" + splitTime[0][1] :splitTime[0][1]} : ${splitTime[0][0]=splitTime[0][0] <10 ? "0" + splitTime[0][0] :splitTime[0][0]} `;
         splitList.append(listItem);
         splitTime=[];
     }
  }
-
 var chronometer = new Chronometer();
 var btnLeft   = document.getElementById('btnLeft');
 var btnRight  = document.getElementById('btnRight');

@@ -50,6 +50,13 @@ body {
   left: 50px;
 }
 
+
+#splits {
+  padding: 50px;
+  overflow-y:scroll;
+   height:600px;
+}
+
 #splits-container li {
   padding-bottom: 5px;
   text-align: right;
