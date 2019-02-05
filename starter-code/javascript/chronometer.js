@@ -1,40 +1,89 @@
+
 // Constructor
-// function Chronometer() {
+ function Chronometer() {
+     this.seconds=0;
+     this.minutes=0;
+     this.milliseconds=0;
+     this.start=undefined;
+     this.stop=false;
+     
+ }
 
-// }
 
-// Chronometer.prototype.startClick = function () {
 
-// };
+ Chronometer.prototype = {
 
-// Chronometer.prototype.setMinutes = function () {
-  
-// };
+    changeElements : function(elementTocChange , value) {
+        value = value <10 ? "0" + value : value;
+        document.getElementById(elementTocChange).innerHTML=value;
+    },
 
-// Chronometer.prototype.setSeconds = function () {
-  
-// };
+    conuntingMilliseconds : function(){
+        var that=this;
+        this.start=setTimeout(function(){
+            that.conuntingMilliseconds()
+        },1);
 
-// Chronometer.prototype.twoDigitsNumber = function () {
-  
-// };
+        if(this.milliseconds <100) {
+            this.milliseconds +=1;
+        } else {
+            this.milliseconds=0;
+            if(this.seconds <60) {
+                this.seconds += 1;
+                this.changeElements("secUni",this.seconds);
+            } else {
+                this.seconds =0;
+                this.minutes +=1;
+                this.changeElements("minUni", this.minutes);
+            }
+        }
 
-// Chronometer.prototype.setTime = function () {
+        this.changeElements("milUni", this.milliseconds);
+    },
 
-// };
 
-// Chronometer.prototype.setMilliseconds = function () {
+    reset : function() {
+        debugger
+        this.milliseconds=0;
+        this.seconds=0;
+        this.milliseconds=0;
+        this.changeElements("milUni",0);
+        this.changeElements("secUni",0);
+        this.changeElements("minUni",0);
+    }.bind(this),
 
-// };
 
-// Chronometer.prototype.stopClick = function () {
-  
-// };
+    resume : function(){
+        debugger
+        if(!this.stop){
+            this.stop=true;
+            this.conuntingMilliseconds();
+        } else {
+            this.stopBtn();
+        }
+    },
 
-// Chronometer.prototype.resetClick = function () {
+    stopBtn : function() {
+        debugger
+        clearTimeout(this.start);
+        this.stop=false;
+    }
 
-// };
 
-// Chronometer.prototype.splitClick = function () {
 
-// };
+
+
+ }
+
+
+ var chronometer = new Chronometer();
+var btnLeft   = document.getElementById('btnLeft');
+var btnRight  = document.getElementById('btnRight');
+
+
+
+
+btnLeft.addEventListener("click",chronometer.resume)
+btnRight.addEventListener("click",chronometer.reset);
+
+ 
