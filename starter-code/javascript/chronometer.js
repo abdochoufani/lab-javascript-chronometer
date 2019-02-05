@@ -13,8 +13,8 @@
     },
     conuntingMilliseconds : function(){
         var that=this;
-        this.start=setTimeout(function(){that.conuntingMilliseconds()},1);
-        if(this.milliseconds <900) {
+        this.start=setTimeout(function(){that.conuntingMilliseconds()},10);
+        if(this.milliseconds < 100) {
             this.milliseconds +=1;
         } else {
             this.milliseconds=0;
