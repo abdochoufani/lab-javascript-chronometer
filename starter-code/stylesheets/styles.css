@@ -58,6 +58,7 @@ body {
 }
 
 #splits-container li {
+  font-family: "Digi";
   padding-bottom: 5px;
   text-align: right;
 }
