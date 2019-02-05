@@ -18,7 +18,7 @@
             this.milliseconds +=1;
         } else {
             this.milliseconds=0;
-            if(this.seconds <60) {
+            if(this.seconds <59) {
                 this.seconds += 1;
                 this.changeElements("secUni",this.seconds);
             } else {

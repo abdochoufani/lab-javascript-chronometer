@@ -54,7 +54,7 @@ body {
 #splits {
   padding: 50px;
   overflow-y:scroll;
-   height:600px;
+   height:500px;
 }
 
 #splits-container li {
@@ -108,13 +108,14 @@ body {
 .btn {
   border: 0;
   border-radius: 100%;
+  padding: 5px;
   bottom: 10px;
   color: #fff;
   cursor: pointer;
-  height: 50px;
+  height: 55px;
   outline: 0;
   position: absolute;
-  width: 50px;
+  width: 55px;
 }
 
 .btn.start,
